@@ -1208,7 +1208,7 @@ void BigInteger::loadFromMemoryBlock (const MemoryBlock& data)
 }
 
 //==============================================================================
-void writeLittleEndianBitsInBuffer (void* buffer, uint32 startBit, uint32 numBits, uint32 value) noexcept
+JUCE_PUBLIC_FUNCTION void writeLittleEndianBitsInBuffer (void* buffer, uint32 startBit, uint32 numBits, uint32 value) noexcept
 {
     jassert (buffer != nullptr);
     jassert (numBits > 0 && numBits <= 32);
@@ -1243,7 +1243,7 @@ void writeLittleEndianBitsInBuffer (void* buffer, uint32 startBit, uint32 numBit
         *data = (uint8) ((*data & (0xff << numBits)) | value);
 }
 
-uint32 readLittleEndianBitsInBuffer (const void* buffer, uint32 startBit, uint32 numBits) noexcept
+JUCE_PUBLIC_FUNCTION uint32 readLittleEndianBitsInBuffer (const void* buffer, uint32 startBit, uint32 numBits) noexcept
 {
     jassert (buffer != nullptr);
     jassert (numBits > 0 && numBits <= 32);

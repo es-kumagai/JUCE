@@ -97,8 +97,8 @@ static File resolveXDGFolder (const char* const type, const char* const fallback
     return File (fallbackFolder);
 }
 
-const char* const* juce_argv = nullptr;
-int juce_argc = 0;
+JUCE_API const char* const* juce_argv = nullptr;
+JUCE_API int juce_argc = 0;
 
 File File::getSpecialLocation (const SpecialLocationType type)
 {

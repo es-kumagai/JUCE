@@ -24,13 +24,13 @@ namespace juce
 {
 
 using AppFocusChangeCallback = void (*)();
-AppFocusChangeCallback appFocusChangeCallback = nullptr;
+JUCE_API AppFocusChangeCallback appFocusChangeCallback = nullptr;
 
 using CheckEventBlockedByModalComps = bool (*)(NSEvent*);
-CheckEventBlockedByModalComps isEventBlockedByModalComps = nullptr;
+JUCE_API CheckEventBlockedByModalComps isEventBlockedByModalComps = nullptr;
 
 using MenuTrackingChangedCallback = void (*)(bool);
-MenuTrackingChangedCallback menuTrackingChangedCallback = nullptr;
+JUCE_API MenuTrackingChangedCallback menuTrackingChangedCallback = nullptr;
 
 //==============================================================================
 struct AppDelegate

@@ -60,7 +60,7 @@ private:
 
     @tags{GUI}
 */
-struct ScopedXDisplay
+struct JUCE_API ScopedXDisplay
 {
     ScopedXDisplay();
     ~ScopedXDisplay();
@@ -74,7 +74,7 @@ struct ScopedXDisplay
 
     @tags{GUI}
 */
-class ScopedXLock
+class JUCE_API ScopedXLock
 {
 public:
     /** Creating a ScopedXLock object locks the X display.
@@ -93,7 +93,7 @@ private:
 };
 
 //==============================================================================
-struct Atoms
+struct JUCE_API Atoms
 {
     Atoms (XDisplay);
 
@@ -124,7 +124,7 @@ struct Atoms
 };
 
 //==============================================================================
-struct GetXProperty
+struct JUCE_API GetXProperty
 {
     GetXProperty (XDisplay, WindowType, AtomType,
                   long offset, long length, bool shouldDelete,

@@ -38,6 +38,7 @@ namespace juce
 namespace zlibNamespace
 {
 #if JUCE_INCLUDE_ZLIB_CODE
+  #define ZEXPORT JUCE_API
   #undef OS_CODE
   #undef fdopen
   #include "../../juce_core/zip/zlib/zlib.h"

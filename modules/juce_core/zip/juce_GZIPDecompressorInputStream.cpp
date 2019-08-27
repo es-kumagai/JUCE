@@ -43,7 +43,7 @@ namespace zlibNamespace
     #pragma clang diagnostic ignored "-Wcomma"
    #endif
   #endif
-
+  #define ZEXPORT JUCE_API
   #undef OS_CODE
   #undef fdopen
   #define ZLIB_INTERNAL

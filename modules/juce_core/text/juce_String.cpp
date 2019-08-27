@@ -28,7 +28,7 @@ namespace juce
  #pragma warning (disable: 4514 4996)
 #endif
 
-NewLine newLine;
+JUCE_API NewLine newLine;
 
 #if defined (JUCE_STRINGS_ARE_UNICODE) && ! JUCE_STRINGS_ARE_UNICODE
  #error "JUCE_STRINGS_ARE_UNICODE is deprecated! All strings are now unicode by default."

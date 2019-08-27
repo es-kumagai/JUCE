@@ -47,9 +47,10 @@ namespace LinuxEventLoop
     {
         setWindowSystemFdInternal (fd, new CallbackFunction<FdCallbackFunction> (readCallback));
     }
-    void removeWindowSystemFd() noexcept;
+    
+    JUCE_PUBLIC_FUNCTION void removeWindowSystemFd() noexcept;
 
-    void setWindowSystemFdInternal (int fd, CallbackFunctionBase* readCallback) noexcept;
+    JUCE_PUBLIC_FUNCTION void setWindowSystemFdInternal (int fd, CallbackFunctionBase* readCallback) noexcept;
 }
 
 } // namespace juce

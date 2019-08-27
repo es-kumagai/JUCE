@@ -38,8 +38,8 @@ namespace juce
 #endif
 
 #if JUCE_X11_SUPPORTS_XEMBED
-bool juce_handleXEmbedEvent (ComponentPeer*, void*);
-unsigned long juce_getCurrentFocusWindow (ComponentPeer*);
+JUCE_PUBLIC_FUNCTION bool juce_handleXEmbedEvent (ComponentPeer*, void*);
+JUCE_PUBLIC_FUNCTION unsigned long juce_getCurrentFocusWindow (ComponentPeer*);
 #endif
 
 extern WindowMessageReceiveCallback dispatchWindowMessage;
@@ -3722,7 +3722,7 @@ void juce_LinuxRemoveRepaintListener (ComponentPeer* peer, Component* dummy)
         linuxPeer->removeOpenGLRepaintListener (dummy);
 }
 
-unsigned long juce_createKeyProxyWindow (ComponentPeer* peer)
+JUCE_PUBLIC_FUNCTION unsigned long juce_createKeyProxyWindow (ComponentPeer* peer)
 {
     if (auto* linuxPeer = dynamic_cast<LinuxComponentPeer*> (peer))
         return linuxPeer->createKeyProxy();
@@ -3730,7 +3730,7 @@ unsigned long juce_createKeyProxyWindow (ComponentPeer* peer)
     return 0;
 }
 
-void juce_deleteKeyProxyWindow (ComponentPeer* peer)
+JUCE_PUBLIC_FUNCTION void juce_deleteKeyProxyWindow (ComponentPeer* peer)
 {
     if (auto* linuxPeer = dynamic_cast<LinuxComponentPeer*> (peer))
         linuxPeer->deleteKeyProxy();

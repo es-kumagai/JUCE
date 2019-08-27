@@ -28,9 +28,9 @@ namespace juce
 {
 
 /** @internal */
-bool juce_handleXEmbedEvent (ComponentPeer*, void*);
+JUCE_PUBLIC_FUNCTION bool juce_handleXEmbedEvent (ComponentPeer*, void*);
 /** @internal */
-unsigned long juce_getCurrentFocusWindow (ComponentPeer*);
+JUCE_PUBLIC_FUNCTION unsigned long juce_getCurrentFocusWindow (ComponentPeer*);
 
 #if JUCE_LINUX || DOXYGEN
 

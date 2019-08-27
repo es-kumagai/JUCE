@@ -41,7 +41,7 @@ namespace FontValues
 }
 
 using GetTypefaceForFont = Typeface::Ptr (*)(const Font&);
-GetTypefaceForFont juce_getTypefaceForFont = nullptr;
+JUCE_API GetTypefaceForFont juce_getTypefaceForFont = nullptr;
 
 float Font::getDefaultMinimumHorizontalScaleFactor() noexcept                { return FontValues::minimumHorizontalScale; }
 void Font::setDefaultMinimumHorizontalScaleFactor (float newValue) noexcept  { FontValues::minimumHorizontalScale = newValue; }
@@ -164,7 +164,7 @@ void Typeface::setTypefaceCacheSize (int numFontsToCache)
     TypefaceCache::getInstance()->setSize (numFontsToCache);
 }
 
-void (*clearOpenGLGlyphCache)() = nullptr;
+JUCE_API void (*clearOpenGLGlyphCache)() = nullptr;
 
 void Typeface::clearTypefaceCache()
 {

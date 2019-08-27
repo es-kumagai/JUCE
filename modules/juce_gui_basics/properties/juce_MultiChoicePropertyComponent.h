@@ -39,7 +39,7 @@ namespace juce
 
     @tags{GUI}
 */
-class MultiChoicePropertyComponent    : public PropertyComponent
+class JUCE_API MultiChoicePropertyComponent    : public PropertyComponent
 {
 private:
     /** Delegating constructor. */

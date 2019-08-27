@@ -28,7 +28,7 @@ namespace juce
 {
 
 //==============================================================================
-class CoreGraphicsContext   : public LowLevelGraphicsContext
+class JUCE_API CoreGraphicsContext   : public LowLevelGraphicsContext
 {
 public:
     CoreGraphicsContext (CGContextRef context, float flipHeight, float targetScale);

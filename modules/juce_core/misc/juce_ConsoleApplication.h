@@ -33,7 +33,7 @@ namespace juce
 
     @see ConsoleApplication
 */
-struct ArgumentList
+struct JUCE_API ArgumentList
 {
     /** Creates an argument list for a given executable. */
     ArgumentList (String executable, StringArray arguments);
@@ -194,7 +194,7 @@ struct ArgumentList
 
     @see ArgumentList
 */
-struct ConsoleApplication
+struct JUCE_API ConsoleApplication
 {
     //==============================================================================
     /**

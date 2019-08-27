@@ -128,6 +128,7 @@ private:
 };
 
 /** Copies all the data that has been written to a MemoryOutputStream into another stream. */
+JUCE_API
 OutputStream& JUCE_CALLTYPE operator<< (OutputStream& stream, const MemoryOutputStream& streamToRead);
 
 } // namespace juce

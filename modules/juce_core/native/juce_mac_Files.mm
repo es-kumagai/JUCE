@@ -168,8 +168,8 @@ bool File::isHidden() const
 }
 
 //==============================================================================
-const char* const* juce_argv = nullptr;
-int juce_argc = 0;
+JUCE_API const char* const* juce_argv = nullptr;
+JUCE_API int juce_argc = 0;
 
 File File::getSpecialLocation (const SpecialLocationType type)
 {

@@ -27,12 +27,12 @@
 namespace juce
 {
 
-bool juce_handleXEmbedEvent (ComponentPeer*, void*);
-Window juce_getCurrentFocusWindow (ComponentPeer*);
+JUCE_PUBLIC_FUNCTION bool juce_handleXEmbedEvent (ComponentPeer*, void*);
+JUCE_PUBLIC_FUNCTION Window juce_getCurrentFocusWindow (ComponentPeer*);
 
 //==============================================================================
-unsigned long juce_createKeyProxyWindow (ComponentPeer*);
-void juce_deleteKeyProxyWindow (ComponentPeer*);
+JUCE_PUBLIC_FUNCTION unsigned long juce_createKeyProxyWindow (ComponentPeer*);
+JUCE_PUBLIC_FUNCTION void juce_deleteKeyProxyWindow (ComponentPeer*);
 
 //==============================================================================
 class XEmbedComponent::Pimpl  : private ComponentListener

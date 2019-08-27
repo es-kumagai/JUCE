@@ -181,14 +181,14 @@ private:
     errors or more parsing options, see the XmlDocument instead.
     @see XmlDocument
 */
-std::unique_ptr<XmlElement> parseXML (const String& textToParse);
+JUCE_PUBLIC_FUNCTION std::unique_ptr<XmlElement> parseXML (const String& textToParse);
 
 /** Attempts to parse some XML text, returning a new XmlElement if it was valid.
     If the parse fails, this will return a nullptr - if you need more information about
     errors or more parsing options, see the XmlDocument instead.
     @see XmlDocument
 */
-std::unique_ptr<XmlElement> parseXML (const File& fileToParse);
+JUCE_PUBLIC_FUNCTION std::unique_ptr<XmlElement> parseXML (const File& fileToParse);
 
 
 

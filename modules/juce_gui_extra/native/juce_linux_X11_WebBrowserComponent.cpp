@@ -807,7 +807,7 @@ void WebBrowserComponent::clearCookies()
     jassertfalse;
 }
 
-int juce_gtkWebkitMain (int argc, const char* argv[])
+JUCE_PUBLIC_FUNCTION int juce_gtkWebkitMain (int argc, const char* argv[])
 {
     if (argc != 4) return -1;
 
