@@ -122,7 +122,7 @@ JUCE_END_IGNORE_WARNINGS_MSVC
 
 //==============================================================================
 // DLL building settings on Windows
-#if JUCE_MSVC
+#if JUCE_WINDOWS //JUCE_MSVC
  #ifdef JUCE_DLL_BUILD
   #define JUCE_API __declspec (dllexport)
   #pragma warning (disable: 4251)
@@ -142,7 +142,7 @@ JUCE_END_IGNORE_WARNINGS_MSVC
  #define JUCE_API   /**< This macro is added to all JUCE public class declarations. */
 #endif
 
-#if JUCE_MSVC && JUCE_DLL_BUILD
+#if JUCE_WINDOWS && JUCE_DLL_BUILD
  #define JUCE_PUBLIC_IN_DLL_BUILD(declaration)  public: declaration; private:
 #else
  #define JUCE_PUBLIC_IN_DLL_BUILD(declaration)  declaration;
