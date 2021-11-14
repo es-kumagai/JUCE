@@ -62,7 +62,7 @@ unsigned long juce_getCurrentFocusWindow (ComponentPeer*);
 
     @tags{GUI}
 */
-class XEmbedComponent : public Component
+class JUCE_API XEmbedComponent : public Component
 {
 public:
     //==============================================================================
