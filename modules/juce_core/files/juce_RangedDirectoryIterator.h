@@ -29,7 +29,7 @@ namespace juce
 
     @tags{Core}
 */
-class DirectoryEntry final
+class JUCE_API DirectoryEntry final
 {
 public:
     /** The path to a file or folder. */
@@ -93,7 +93,7 @@ inline const DirectoryEntry& operator* (const DirectoryEntry& e) noexcept { retu
 
     @tags{Core}
 */
-class RangedDirectoryIterator final
+class JUCE_API RangedDirectoryIterator final
 {
 public:
     using difference_type   = std::ptrdiff_t;

@@ -242,7 +242,7 @@ private:
 
     @tags{Audio}
 */
-class ScopedNoDenormals
+class JUCE_API ScopedNoDenormals
 {
 public:
     ScopedNoDenormals() noexcept;
