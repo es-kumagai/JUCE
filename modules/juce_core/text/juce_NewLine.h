@@ -63,7 +63,7 @@ public:
     myOutputStream << "Hello World" << newLine << newLine;
     @endcode
 */
-extern NewLine newLine;
+JUCE_API extern NewLine newLine;
 
 //==============================================================================
 /** Writes a new-line sequence to a string.

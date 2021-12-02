@@ -47,7 +47,7 @@ namespace juce
 template <class ObjectClass,
           class TypeOfCriticalSectionToUse = DummyCriticalSection>
 
-class OwnedArray
+class JUCE_API OwnedArray
 {
 public:
     //==============================================================================

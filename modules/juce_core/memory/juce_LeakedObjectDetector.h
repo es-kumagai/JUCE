@@ -39,7 +39,7 @@ namespace juce
     @tags{Core}
 */
 template <class OwnerClass>
-class LeakedObjectDetector
+class JUCE_API LeakedObjectDetector
 {
 public:
     //==============================================================================
