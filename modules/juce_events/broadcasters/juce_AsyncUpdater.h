@@ -64,6 +64,10 @@ public:
     */
     void triggerAsyncUpdate();
 
+    #if JUCE_MAC
+    void triggerAsyncUpdatePriority (MessagePriority);
+    #endif
+
     /** This will stop any pending updates from happening.
 
         If called after triggerAsyncUpdate() and before the handleAsyncUpdate()
@@ -105,6 +109,8 @@ private:
     ReferenceCountedObjectPtr<AsyncUpdaterMessage> activeMessage;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AsyncUpdater)
+
+    void triggerAsyncUpdatePost (std::function<bool()> post);
 };
 
 } // namespace juce

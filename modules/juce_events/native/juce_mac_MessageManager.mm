@@ -451,10 +451,10 @@ void MessageManager::doPlatformSpecificShutdown()
     appDelegate = nullptr;
 }
 
-bool MessageManager::postMessageToSystemQueue (MessageBase* message)
+bool MessageManager::postMessageToSystemQueue (MessageBase* message, MessagePriority priority)
 {
     jassert (appDelegate != nil);
-    appDelegate->messageQueue.post (message);
+    appDelegate->messageQueue.post (message, priority);
     return true;
 }
 
@@ -487,7 +487,6 @@ void __attribute__ ((visibility("default"))) repostCurrentNSEvent()
 
     (new EventReposter())->post();
 }
-
 
 //==============================================================================
 #if JUCE_MAC

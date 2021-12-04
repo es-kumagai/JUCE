@@ -59,16 +59,30 @@ AsyncUpdater::~AsyncUpdater()
     activeMessage->shouldDeliver.set (0);
 }
 
-void AsyncUpdater::triggerAsyncUpdate()
+void AsyncUpdater::triggerAsyncUpdatePost (std::function<bool()> post)
 {
     // If you're calling this before (or after) the MessageManager is
     // running, then you're not going to get any callbacks!
     JUCE_ASSERT_MESSAGE_MANAGER_EXISTS
 
     if (activeMessage->shouldDeliver.compareAndSetBool (1, 0))
-        if (! activeMessage->post())
+        if (! post())
             cancelPendingUpdate(); // if the message queue fails, this avoids getting
                                    // trapped waiting for the message to arrive
+}
+
+#if JUCE_MAC
+void AsyncUpdater::triggerAsyncUpdatePriority (MessagePriority priority)
+{
+    auto post = [this, priority]() -> bool { return activeMessage->post (priority); };
+    triggerAsyncUpdatePost (post);
+}
+#endif
+
+void AsyncUpdater::triggerAsyncUpdate()
+{
+    auto post = [this]() { return activeMessage->post(); };
+    triggerAsyncUpdatePost (post);
 }
 
 void AsyncUpdater::cancelPendingUpdate() noexcept

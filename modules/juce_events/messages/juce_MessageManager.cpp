@@ -64,11 +64,18 @@ void MessageManager::deleteInstance()
 }
 
 //==============================================================================
+#if JUCE_MAC
+bool MessageManager::MessageBase::post (MessagePriority priority)
+{
+    auto post = [this, priority]() -> bool { return postMessageToSystemQueue (this, priority); };
+#else
 bool MessageManager::MessageBase::post()
 {
-    auto* mm = MessageManager::instance;
+    auto post = [this]() -> bool { return postMessageToSystemQueue (this); };
+#endif
+    auto *mm = MessageManager::instance;
 
-    if (mm == nullptr || mm->quitMessagePosted.get() != 0 || ! postMessageToSystemQueue (this))
+    if (mm == nullptr || mm->quitMessagePosted.get() != 0 || ! post())
     {
         Ptr deleter (this); // (this will delete messages that were just created with a 0 ref count)
         return false;
@@ -103,6 +110,8 @@ bool MessageManager::runDispatchLoopUntil (int millisecondsToRunFor)
 #endif
 
 #if ! (JUCE_MAC || JUCE_IOS || JUCE_ANDROID)
+    // implemented in platform-specific code (juce_linux_Messaging.cpp and juce_win32_Messaging.cpp)
+
 class MessageManager::QuitMessage   : public MessageManager::MessageBase
 {
 public:

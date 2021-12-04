@@ -50,14 +50,25 @@ public:
         CFRunLoopSourceInvalidate (runLoopSource.get());
     }
 
-    void post (MessageManager::MessageBase* const message)
+    void post (MessageManager::MessageBase* const message, MessagePriority priority = MessagePriority::normal)
     {
-        messages.add (message);
+        switch (priority) {
+
+            case MessagePriority::normal:
+                messages.add (message);
+                break;
+
+            case MessagePriority::low:
+                lowPriorityMessages.add (message);
+                break;
+        }
+
         wakeUp();
     }
 
 private:
     ReferenceCountedArray<MessageManager::MessageBase, CriticalSection> messages;
+    ReferenceCountedArray<MessageManager::MessageBase, CriticalSection> lowPriorityMessages;
     CFRunLoopRef runLoop;
     CFUniquePtr<CFRunLoopSourceRef> runLoopSource;
 
@@ -69,7 +80,10 @@ private:
 
     bool deliverNextMessage()
     {
-        const MessageManager::MessageBase::Ptr nextMessage (messages.removeAndReturn (0));
+        MessageManager::MessageBase::Ptr nextMessage (messages.removeAndReturn (0));
+
+        if (nextMessage == nullptr)
+            nextMessage = lowPriorityMessages.removeAndReturn(0);
 
         if (nextMessage == nullptr)
             return false;

@@ -32,6 +32,15 @@ class ActionBroadcaster;
 /** See MessageManager::callFunctionOnMessageThread() for use of this function type. */
 using MessageCallbackFunction = void* (void* userData);
 
+//==============================================================================
+/** An enumeration that express a priority of a message. */
+#if JUCE_MAC || JUCE_IOS
+enum class MessagePriority
+{
+    normal = 0,
+    low = 1
+};
+#endif
 
 //==============================================================================
 /**
@@ -185,7 +194,12 @@ public:
         ~MessageBase() override = default;
 
         virtual void messageCallback() = 0;
+
+        #if JUCE_MAC
+        bool post (MessagePriority priority = MessagePriority::normal);
+        #else
         bool post();
+        #endif
 
         using Ptr = ReferenceCountedObjectPtr<MessageBase>;
 
@@ -329,7 +343,11 @@ private:
     Thread::ThreadID messageThreadId;
     Atomic<Thread::ThreadID> threadWithLock;
 
+    #if JUCE_MAC
+    static bool postMessageToSystemQueue (MessageBase*, MessagePriority);
+    #else
     static bool postMessageToSystemQueue (MessageBase*);
+    #endif
     static void* exitModalLoopCallback (void*);
     static void doPlatformSpecificInitialisation();
     static void doPlatformSpecificShutdown();
